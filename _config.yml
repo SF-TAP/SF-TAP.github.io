@@ -11,7 +11,7 @@ title: "SF-TAP: Scalable and Flexible Traffic Analysis Platform"
 description: > # this means to ignore newlines until "baseurl:"
   Now, you need not implement TCP reassembler, IP defragmenter, and flow separator.
   You just implement application level network traffic analyzers by using SF-TAP.
-  SF-TAP allow you to easily develop your own analyzers, such as IDS, network forensics, and traffic engineering software.
+  SF-TAP allows you to easily develop your own analyzers, such as IDS, network forensics, and traffic engineering software.
   Enjoy your hacking!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://yourdomain.com" # the base hostname & protocol for your site

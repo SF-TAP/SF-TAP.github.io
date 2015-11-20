@@ -4,6 +4,105 @@ layout: default
 
 <div class="home">
 
+  <h1>What?</h1>
+  <p>
+    SF-TAP is a platform for application-level network traffic analysis. It can deal with high-bandwidth network traffic because of the scalable architecture. Furthermore, SF-TAP allows developers to easily implement application-level network traffic analyzers because of some abstractions. SF-TAP provides two main components, which are the SF-TAP flow abstractor and the SF-TAP cell incubator.
+  </p>
+
+  <h2>SF-TAP Flow Abstractor</h2>
+  <p>
+    SF-TAP flow abstractor abstracts network traffic by files of UNIX domain socket, much like Plan 9, UNIX's /dev or /proc. It captures L2 frames via a NIC by pcap or netmap, defragments fragmented IP packets, reassembles TCP flows, and classifies the flows by using regular expressions, which indicates application protocols. The classified flows are outputted to the files provided by UNIX domain socket. Accordingly, developers can only focus to implement application-level network traffic analyzers by accessing the files. In other words, they do not need to implement complicated programs, such as TCP reassembler.
+  </p>
+
+  <h2>SF-TAP Cell Incubator</h2>
+  <p>
+    The SF-TAP cell incubator is a software-based network traffic balancer that mirrors and separates network traffic based on the flows. The flows are forwarded via multiple NICs to multiple SF-TAP flow abstractors to allow executing analyzers, which tend to consume many computer resources, on multiple physical machines.
+  </p>
+
+  <hr>
+
+  <h1>Installation</h1>
+
+  <h2>Install SF-TAP Flow Abstractor on Ubuntu Linux</h2>
+
+  <p>
+    This is for Ubuntu version 14.10, 15.04, and 15.10
+  </p>
+
+  <h2>Install Dependencies</h2>
+
+  <p>
+    First of all, install build-essential, cmake, git, libevent-dev, libboost-all-dev, libpcap-dev, libre2-dev, libyaml-cpp-dev.
+  </p>
+
+  <pre><code>$ sudo apt-get install build-essential cmake git libevent-dev \
+libboost-all-dev libpcap-dev libre2-dev libyaml-cpp-dev</code></pre>
+
+  <h2>Build and Run SF-TAP Flow Abstractor</h2>
+
+  <h3>1. Get Source</h3>
+
+  <p>
+    Clone the SF-TAP flow abstractor from GitHUB.
+  </p>
+  <pre><code>$ git clone https://github.com/SF-TAP/flow-abstractor.git</code></pre>
+
+  <h3>2. Build</h3>
+
+  <p>
+    Build by cmake and make.
+  </p>
+
+  <pre><code>$ cd flow-abstractor
+$ cmake -DCMAKE_BUILD_TYPE=Release CMakeLists.txt
+$ make</code></pre>
+
+  <h3>3. Run</h3>
+
+  <p>
+    Run specifying a network interface and config file.
+  </p>
+
+  <pre><code>$ sudo ./src/sftap_fabs -i eth0 -c ./examples/fabs.conf</code></pre>
+
+  <hr>
+
+  <h2>Install SF-TAP Cell Incubator on FreeBSD</h2>
+
+  <p>
+    This is for FreeBSD 10.1 and 10.2.
+  </p>
+
+  <h2>Build netmap Enabled Kernel</h2>
+
+  <p>
+    Edit kernel config as follows.
+  </p>
+
+  <pre><code># cd /usr/src/sys/amd64/conf
+# cp GENERIC GENERIC.netmap
+# vi GENERIC.netmap
+
+device netmap # add device of netmap</code></pre>
+
+  <hr>
+
+  <h1>References</h1>
+  <pre><code>@inproceedings {193176,
+  author = {Yuuki Takano and Ryosuke Miura and Shingo Yasuda and Kunio Akashi and Tomoya Inoue},
+  title = "{SF-TAP: Scalable and Flexible Traffic Analysis Platform Running on Commodity Hardware}",
+  booktitle = {29th Large Installation System Administration Conference (LISA15)},
+  year = {2015},
+  month = Nov,
+  isbn = {978-1-931971-270},
+  address = {Washington, D.C.},
+  pages = {25--36},
+  url = {https://www.usenix.org/conference/lisa15/conference-program/presentation/takano},
+  publisher = {USENIX Association},
+}</code></pre>
+
+  <hr>
+
   <h1 class="page-heading">Posts</h1>
 
   <ul class="post-list">
