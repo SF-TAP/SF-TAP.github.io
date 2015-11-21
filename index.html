@@ -23,71 +23,45 @@ layout: default
 
   <h1>Installation</h1>
 
-  <h2>Install SF-TAP Flow Abstractor on Ubuntu Linux</h2>
-
-  <p>
-    This is for Ubuntu version 14.10, 15.04, and 15.10
-  </p>
-
-  <h2>Install Dependencies</h2>
-
-  <p>
-    First of all, install build-essential, cmake, git, libevent-dev, libboost-all-dev, libpcap-dev, libre2-dev, libyaml-cpp-dev.
-  </p>
-
-  <pre><code>$ sudo apt-get install build-essential cmake git libevent-dev \
-libboost-all-dev libpcap-dev libre2-dev libyaml-cpp-dev</code></pre>
-
-  <h2>Build and Run SF-TAP Flow Abstractor</h2>
-
-  <h3>1. Get Source</h3>
-
-  <p>
-    Clone the SF-TAP flow abstractor from GitHUB.
-  </p>
-  <pre><code>$ git clone https://github.com/SF-TAP/flow-abstractor.git</code></pre>
-
-  <h3>2. Build</h3>
-
-  <p>
-    Build by cmake and make.
-  </p>
-
-  <pre><code>$ cd flow-abstractor
-$ cmake -DCMAKE_BUILD_TYPE=Release CMakeLists.txt
-$ make</code></pre>
-
-  <h3>3. Run</h3>
-
-  <p>
-    Run specifying a network interface and config file.
-  </p>
-
-  <pre><code>$ sudo ./src/sftap_fabs -i eth0 -c ./examples/fabs.conf</code></pre>
+  <ul>
+    <li>
+      <a href="installation/2015/11/21/install-flow-abstractor.html">Install SF-TAP Flow Abstractor on Ubuntu Linux</a>
+    </li>
+    <li>
+      <a href="installation/2015/11/21/install-cell-incubator.html">Install SF-TAP Cell Incubator on Ubuntu Linux</a>
+    </li>
+  </ul>
 
   <hr>
 
-  <h2>Install SF-TAP Cell Incubator on FreeBSD</h2>
+  <h1>Tutorial</h1>
 
-  <p>
-    This is for FreeBSD 10.1 and 10.2.
-  </p>
+  <ul>
+    <li>SF-TAP Flow Abstractor</li>
+    <ul>
+      <li>
+        Use Example HTTP and DNS Analyzers
+      </li>
+      <li>
+        Write Your Own Analyzer
+      </li>
+    </ul>
+    <li>SF-TAP Cell Incubator</li>
+    <ul>
+      <li>
+        Flow Separating, and L2 Mirroring and Bridging
+      </li>
+    </ul>
+  </ul>
 
-  <h2>Build netmap Enabled Kernel</h2>
-
-  <p>
-    Edit kernel config as follows.
-  </p>
-
-  <pre><code># cd /usr/src/sys/amd64/conf
-# cp GENERIC GENERIC.netmap
-# vi GENERIC.netmap
-
-device netmap # add device of netmap</code></pre>
 
   <hr>
 
   <h1>References</h1>
+
+  <ul>
+    <li>
+      <a href="https://www.usenix.org/conference/lisa15/conference-program/presentation/takano">SF-TAP: Scalable and Flexible Traffic Analysis Platform Running on Commodity Hardware (USENIX LISA 2015)</a> (The paper PDF is available on <a href="/assets/lisa15-paper-takano.pdf">here</a>.)
   <pre><code>@inproceedings {193176,
   author = {Yuuki Takano and Ryosuke Miura and Shingo Yasuda and Kunio Akashi and Tomoya Inoue},
   title = "{SF-TAP: Scalable and Flexible Traffic Analysis Platform Running on Commodity Hardware}",
@@ -100,6 +74,8 @@ device netmap # add device of netmap</code></pre>
   url = {https://www.usenix.org/conference/lisa15/conference-program/presentation/takano},
   publisher = {USENIX Association},
 }</code></pre>
+    </li>
+  </ul>
 
   <hr>
 
