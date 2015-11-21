@@ -42,7 +42,7 @@ Install git to get the source.
 
 ## Build Cell Incubator
 
-Clone the souce form GitHUB.
+Clone the souce form GitHub.
 
     $ git clone https://github.com/SF-TAP/sf-incubator.git
 

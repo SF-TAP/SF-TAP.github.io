@@ -5,6 +5,7 @@ layout: default
 <div class="home">
 
   <h1>What?</h1>
+
   <p>
     SF-TAP is a platform for application-level network traffic analysis. It can deal with high-bandwidth network traffic because of the scalable architecture. Furthermore, SF-TAP allows developers to easily implement application-level network traffic analyzers because of some abstractions. SF-TAP provides two main components, which are the SF-TAP flow abstractor and the SF-TAP cell incubator.
   </p>
@@ -18,6 +19,8 @@ layout: default
   <p>
     The SF-TAP cell incubator is a software-based network traffic balancer that mirrors and separates network traffic based on the flows. The flows are forwarded via multiple NICs to multiple SF-TAP flow abstractors to allow executing analyzers, which tend to consume many computer resources, on multiple physical machines.
   </p>
+
+  <img src="assets/highlevel.png" alt="Architecture of SF-TAP" title="Architecture of SF-TAP">
 
   <hr>
 
