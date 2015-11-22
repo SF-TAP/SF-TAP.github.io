@@ -53,7 +53,52 @@ For example, if you connect to http://sf-tap.github.io/ in another prompt,
 
 , then you will get JSON data from the standard output as follows.
 
-    {"server":{"response":{"msg":"OK","code":"200","ver":"HTTP/1.1"},"ip":"103.245.222.133","header":{"cache-control":"max-age=600","content-length":"8418","age":"0","expires":"Sat, 21 Nov 2015 10:41:48 GMT","date":"Sat, 21 Nov 2015 10:42:19 GMT","x-fastly-request-id":"2fa8bb058315c7d938574efee8e564f03e4d5d08","access-control-allow-origin":"*","x-timer":"S1448102539.814963,VS0,VE180","vary":"Accept-Encoding","server":"GitHub.com","x-github-request-id":"67F5E016:17E1:1286355:56504813","x-cache":"HIT","content-type":"text/html; charset=utf-8","connection":"keep-alive","via":"1.1 varnish","accept-ranges":"bytes","x-cache-hits":"1","last-modified":"Sat, 21 Nov 2015 09:56:46 GMT","x-served-by":"cache-itm7421-ITM"},"port":80},"client":{"method":{"method":"GET","ver":"HTTP/1.1","uri":"/"},"header":{"host":"sf-tap.github.io","user-agent":"curl/7.43.0","accept":"*/*"},"port":64755,"ip":"192.168.24.52"}}
+    {
+      "server":{
+        "response":{
+          "msg":"OK",
+          "code":"200",
+          "ver":"HTTP/1.1"
+        },
+        "ip":"103.245.222.133",
+        "header":{
+          "cache-control":"max-age=600",
+          "content-length":"8418",
+          "age":"0",
+          "expires":"Sat, 21 Nov 2015 10:41:48 GMT",
+          "date":"Sat, 21 Nov 2015 10:42:19 GMT",
+          "x-fastly-request-id":"2fa8bb058315c7d938574efee8e564f03e4d5d08",
+          "access-control-allow-origin":"*",
+          "x-timer":"S1448102539.814963,VS0,VE180",
+          "vary":"Accept-Encoding",
+          "server":"GitHub.com",
+          "x-github-request-id":"67F5E016:17E1:1286355:56504813",
+          "x-cache":"HIT",
+          "content-type":"text/html; charset=utf-8",
+          "connection":"keep-alive",
+          "via":"1.1 varnish",
+          "accept-ranges":"bytes",
+          "x-cache-hits":"1",
+          "last-modified":"Sat, 21 Nov 2015 09:56:46 GMT",
+          "x-served-by":"cache-itm7421-ITM"
+        },
+        "port":80
+      },
+      "client":{
+        "method":{
+          "method":"GET",
+          "ver":"HTTP/1.1",
+          "uri":"/"
+        },
+        "header":{
+          "host":"sf-tap.github.io",
+          "user-agent":"curl/7.43.0",
+          "accept":"*/*"
+        },
+        "port":64755,
+        "ip":"192.168.24.52"
+      }
+    }
 
 ---
 
@@ -84,5 +129,75 @@ For example, if you lookup sf-tap.github.io in another prompt,
 
 you will see DNS queries in JSON as follows.
 
-    {"src":{"ip":"192.168.24.52","port":54459},"dst":{"ip":"192.168.24.1","port":53},"id":60923,"qr":0,"op":0,"aa":0,"tc":0,"rd":1,"ra":0,"z":0,"ad":0,"cd":0,"rc":0,"query_count":1,"answer_count":0,"authority_count":0,"additional_count":0,"query":[{"name":"sf-tap.github.io","type":"A","class":1}],"answer":[],"authority":[],"additional":[]}
-    {"src":{"ip":"192.168.24.1","port":53},"dst":{"ip":"192.168.24.52","port":54459},"id":60923,"qr":1,"op":0,"aa":0,"tc":0,"rd":1,"ra":1,"z":0,"ad":0,"cd":0,"rc":0,"query_count":1,"answer_count":2,"authority_count":4,"additional_count":4,"query":[{"name":"sf-tap.github.io","type":"A","class":1}],"answer":[{"name":"sf-tap.github.io","type":"CNAME","class":1,"ttl":3600,"cname":"github.map.fastly.net"},{"name":"github.map.fastly.net","type":"A","class":1,"ttl":30,"a":"103.245.222.133"}],"authority":[{"name":"fastly.net","type":"NS","class":1,"ttl":71200,"ns":"ns1.p04.dynect.net"},{"name":"fastly.net","type":"NS","class":1,"ttl":71200,"ns":"ns4.p04.dynect.net"},{"name":"fastly.net","type":"NS","class":1,"ttl":71200,"ns":"ns2.p04.dynect.net"},{"name":"fastly.net","type":"NS","class":1,"ttl":71200,"ns":"ns3.p04.dynect.net"}],"additional":[{"name":"ns1.p04.dynect.net","type":"A","class":1,"ttl":81318,"a":"208.78.70.4"},{"name":"ns2.p04.dynect.net","type":"A","class":1,"ttl":78428,"a":"204.13.250.4"},{"name":"ns3.p04.dynect.net","type":"A","class":1,"ttl":72003,"a":"208.78.71.4"},{"name":"ns4.p04.dynect.net","type":"A","class":1,"ttl":71749,"a":"204.13.251.4"}]}
+    {
+      "src":{"ip":"192.168.24.52", "port":54459},
+      "dst":{"ip":"192.168.24.1", "port":53},
+      "id":60923, "qr":0, "op":0, "aa":0, "tc":0,
+      "rd":1, "ra":0, "z":0, "ad":0, "cd":0, "rc":0,
+      "query_count":1,
+      "answer_count":0,
+      "authority_count":0,
+      "additional_count":0,
+      "query":[{"name":"sf-tap.github.io", "type":"A", "class":1}],
+      "answer":[],
+      "authority":[],
+      "additional":[]
+    }
+
+    {
+      "src":{"ip":"192.168.24.1", "port":53},
+      "dst":{"ip":"192.168.24.52", "port":54459},
+      "id":60923, "qr":1, "op":0, "aa":0, "tc":0,
+      "rd":1, "ra":1, "z":0, "ad":0, "cd":0, "rc":0,
+      "query_count":1,
+      "answer_count":2,
+      "authority_count":4,
+      "additional_count":4,
+      "query":[{"name":"sf-tap.github.io", "type":"A", "class":1}],
+      "answer":[
+        {
+          "name":"sf-tap.github.io", "type":"CNAME", "class":1,
+          "ttl":3600, "cname":"github.map.fastly.net"
+        },
+        {
+          "name":"github.map.fastly.net", "type":"A", "class":1,
+          "ttl":30, "a":"103.245.222.133"
+        }
+      ],
+      "authority":[
+        {
+          "name":"fastly.net", "type":"NS", "class":1,
+          "ttl":71200, "ns":"ns1.p04.dynect.net"
+        },
+        {
+          "name":"fastly.net", "type":"NS", "class":1,
+          "ttl":71200, "ns":"ns4.p04.dynect.net"
+        },
+        {
+          "name":"fastly.net", "type":"NS", "class":1,
+          "ttl":71200, "ns":"ns2.p04.dynect.net"
+        },
+        {
+          "name":"fastly.net", "type":"NS", "class":1,
+          "ttl":71200, "ns":"ns3.p04.dynect.net"
+        }
+      ],
+      "additional":[
+        {
+          "name":"ns1.p04.dynect.net", "type":"A", "class":1,
+          "ttl":81318, "a":"208.78.70.4"
+        },
+        {
+          "name":"ns2.p04.dynect.net", "type":"A", "class":1,
+          "ttl":78428, "a":"204.13.250.4"
+        },
+        {
+          "name":"ns3.p04.dynect.net", "type":"A", "class":1,
+          "ttl":72003, "a":"208.78.71.4"
+        },
+        {
+          "name":"ns4.p04.dynect.net", "type":"A", "class":1,
+          "ttl":71749, "a":"204.13.251.4"
+        }
+      ]
+    }
