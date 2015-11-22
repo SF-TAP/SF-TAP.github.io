@@ -12,7 +12,7 @@ layout: default
 
   <h2>SF-TAP Flow Abstractor</h2>
   <p>
-    SF-TAP flow abstractor abstracts network traffic by files of UNIX domain socket, much like Plan 9, UNIX's /dev or /proc. It captures L2 frames via a NIC by pcap or netmap, defragments fragmented IP packets, reassembles TCP flows, and classifies the flows by using regular expressions, which indicates application protocols. The classified flows are outputted to the files provided by UNIX domain socket. Accordingly, developers can only focus to implement application-level network traffic analyzers by accessing the files. In other words, they do not need to implement complicated programs, such as TCP reassembler.
+    The SF-TAP flow abstractor abstracts network traffic by files of UNIX domain socket, much like Plan 9, UNIX's /dev or /proc. It captures L2 frames via a NIC by pcap or netmap, defragments fragmented IP packets, reassembles TCP flows, and classifies the flows by using regular expressions, which indicates application protocols. The classified flows are outputted to the files provided by UNIX domain socket. Accordingly, developers can only focus to implement application-level network traffic analyzers by accessing the files. In other words, they do not need to implement complicated programs, such as TCP reassembler.
   </p>
 
   <h2>SF-TAP Cell Incubator</h2>

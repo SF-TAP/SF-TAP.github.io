@@ -12,7 +12,7 @@ If you run it, there are files in the directory as follows.
 
     $ cd /tmp/sf-tap
     $ ls -R
-    loopback7= tcp/       udp/
+    loopback7=   tcp/         udp/
 
     ./tcp:
     default=         http=            smtp=            torrent_tracker=
