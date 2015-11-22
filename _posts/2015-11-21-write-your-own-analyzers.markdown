@@ -106,7 +106,7 @@ The header of DATA event is denoted as follows.
 
 In this case, the header indicates that
 data is coming from (ip2=216.58.221.196, port2=80) because
-the header denotes as from=2.
+the header denotes from=2.
 The entry of match=down indicates that the which regular expressions,
 provided in the configuration file shown before.
 Accordingly, you can determine whether the data is from server or client
