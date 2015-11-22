@@ -7,7 +7,7 @@ categories: tutorial
 
 # How to Write Application Level Analyzers
 
-In this document, we show how to implement analyzers.
+In this document, we show how to implement analyzers for the SF-TAP flow abstractor.
 
 This tutorial is also available on SlideShare.
 
@@ -120,10 +120,10 @@ The SF-TAP flow abstractor identifies each flow by using 5-tuple as follows.
     (ip1, port1, ip2, port2, hop)
 
 The 'hop' filed is used for loopback7 interface,
-and the SF-TAP flow abstractor increment it internally.
+and the SF-TAP flow abstractor increments it internally.
 The loopback7 is used for re-injecting flows for encapsulated flows,
 such as HTTP proxy.
-We do not show more detail of the loopback7 interface here.
+We do not show more details of the loopback7 interface here.
 
 Note that CREATED and DESTROYED events are not invoked when UDP protocols
 since UDP is not connection oriented.
@@ -157,7 +157,7 @@ We give pseudo code to analyze TCP protocols as follows.
     }
 
 In this code, first of all, we connect to the file of UNIX domain socket.
-Then we read line, which is a header, from the socket.
+Then we read a line, which is a header, from the socket.
 We parse the line to interpret the header, and generate the session ID by using
 it.
 After that, we read data if the event is DATA where
