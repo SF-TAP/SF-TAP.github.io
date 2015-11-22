@@ -77,7 +77,57 @@ some reasons, which are timeout, reset, and fin-close.
 
 ## Protocol of Flow Abstraction Interface
 
-not yet
+The protocol on flow abstraction interfaces consists of chunks
+of header and data.
+Note that data is involved only if chunk's event is DATA.
+
+The header is ended \n (line feed), and denoted as follows.
+
+    ip1=192.168.24.54,ip2=216.58.221.196,port1=59547,port2=80,hop=0,l3=ipv4,l4=tcp,event=CREATED\n
+
+This is equivalent for
+
+    {
+      "ip1":   "192.168.24.54",
+      "ip2":   "216.58.221.196",
+      "port1": 59547,
+      "port2": 80,
+      "hop":   0,
+      "l3":    "ipv4",
+      "l4":    "tcp",
+      "event": "CREATED"
+    }
+
+in JSON. When the event is CREATED or DESTROYED, the chunk does not involve data.
+Otherwise, when the event is DATA, the chunk involve data.
+The header of DATA event is denoted as follows.
+
+    ip1=192.168.24.54,ip2=216.58.221.196,port1=59547,port2=80,hop=0,l3=ipv4,l4=tcp,event=DATA,from=2,match=down,len=494\n
+
+In this case, the header indicates that
+data is coming from (ip2=216.58.221.196, port2=80) because
+the header denotes as from=2.
+The entry of match=down indicates that the which regular expressions,
+provided in the configuration file shown before.
+Accordingly, you can determine whether the data is from server or client
+by the 'match' filed.
+The data length is indicated by len=494 in this case.
+
+Since multiple flows are outputted to a single abstraction interface,
+it is required to identify chunks by flow identifiers.
+The SF-TAP flow abstractor identifies each flow by using 5-tuple as follows.
+
+    (ip1, port1, ip2, port2, hop)
+
+The 'hop' filed is used for loopback7 interface,
+and the SF-TAP flow abstractor increment it internally.
+The loopback7 is used for re-injecting flows for encapsulated flows,
+such as HTTP proxy.
+We do not show more detail of the loopback7 interface here.
+
+Note that CREATED and DESTROYED events are not invoked when UDP protocols
+since UDP is not connection oriented.
+Thus, you need handle only DATA event for UDP protocols.
 
 ## Pseudo Code for TCP Protocols
 
@@ -87,7 +137,7 @@ We give pseudo code to analyze TCP protocols as follows.
     s = socket();
     connect(s, "/tmp/sf-tap/tcp/http");
 
-    for (;;) {
+    loop {
         // read header
         line = readline(s);
         h = parse_header(line);
@@ -114,3 +164,23 @@ After that, we read data if the event is DATA where
 the data length is specified by "len" key in the header.
 
 The skeleton written in Python is available on [GitHub Gist](https://gist.github.com/ytakano/87fcb3377df3c29c60c3 "GitHub Gist").
+
+## Pseudo Code for UDP Protocols
+
+Then, we give pseudo code to analyze UDP protocols as follows.
+
+    // connect to socket
+    s = socket();
+    connect(s, "/tmp/sf-tap/udp/dns");
+
+    loop {
+        // read header
+        line = readline(s);
+        h = parse_header(line);
+    
+        if (h["event"] == "DATA") {
+            // data is arriving
+            // h["from"] help to determine data origin
+            read(s, buf, h["len"]);
+        }
+    }
