@@ -161,7 +161,7 @@ Then we read line, which is a header, from the socket.
 We parse the line to interpret the header, and generate the session ID by using
 it.
 After that, we read data if the event is DATA where
-the data length is specified by "len" key in the header.
+the data length is specified by 'len' field in the header.
 
 The skeleton written in Python is available on [GitHub Gist](https://gist.github.com/ytakano/87fcb3377df3c29c60c3 "GitHub Gist").
 
