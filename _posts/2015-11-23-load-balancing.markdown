@@ -20,7 +20,7 @@ by specifying the 'balance' field in the configuration file as follows.
       format:  text
       body:    yes
       nice:    100
-      balance: 4 # flows are balanced by 3 interfaces
+      balance: 4 # flows are balanced by 4 interfaces
 
 In this case, 4 HTTP interfaces are provided for HTTP protocol as
 follows.
