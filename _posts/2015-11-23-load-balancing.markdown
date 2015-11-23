@@ -34,13 +34,13 @@ follows.
 Thus, an HTTP analyzer can take advantage of multiple CPU cores
 by connecting load balancing interfaces as follows.
 
-    $ python3 http/sftap_http.py /tmp/sf-tap/tcp/http0=
+    $ python3 http/sftap_http.py /tmp/sf-tap/tcp/http0
 
-    $ python3 http/sftap_http.py /tmp/sf-tap/tcp/http1=
+    $ python3 http/sftap_http.py /tmp/sf-tap/tcp/http1
 
-    $ python3 http/sftap_http.py /tmp/sf-tap/tcp/http2=
+    $ python3 http/sftap_http.py /tmp/sf-tap/tcp/http2
 
-    $ python3 http/sftap_http.py /tmp/sf-tap/tcp/http3=
+    $ python3 http/sftap_http.py /tmp/sf-tap/tcp/http3
 
 Following graph shows CPU loads of the HTTP analyzer with 1, 2, and 4 processes
 when generating 2500 HTTP requests per second.
