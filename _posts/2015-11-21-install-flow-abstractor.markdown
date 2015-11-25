@@ -23,6 +23,13 @@ Then, clone the source of the SF-TAP flow abstractor from GitHub.
 
     $ git clone https://github.com/SF-TAP/flow-abstractor.git
 
+### Environment Variables
+
+Before compiling, set environment variables for cmake as follows.
+
+    $ export CMAKE_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib
+    $ export CMAKE_INCLUDE_PATH=/usr/include:/usr/local/include
+
 ### Build
 
 Build by cmake and make.
