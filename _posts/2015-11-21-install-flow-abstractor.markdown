@@ -44,11 +44,10 @@ If you get an eorror regarding language locale, install suitable launguage pack.
 
 ### Use netmap
 
-If you want to use netmap, set an option of USE_NETMAP=1.
+If you want to use netmap, set an option of USE_NETMAP=1 to cmake.
 
     $ cmake -DUSE_NETMAP=1 CMakeLists.txt
     $ make
-
 
 , and pass -n option when executing as follows.
 
