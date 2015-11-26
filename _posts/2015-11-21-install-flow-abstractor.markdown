@@ -23,7 +23,7 @@ Then, clone the source of the SF-TAP flow abstractor from GitHub.
 
     $ git clone https://github.com/SF-TAP/flow-abstractor.git
 
-### Environement Variables
+### Environment Variables
 
 Before compiling, set environment variables for cmake as follows.
 
@@ -53,7 +53,6 @@ If you want to use netmap, set an option of USE_NETMAP=1.
 , and pass -n option when executing as follows.
 
     $ ./src/sftap_fabs -i eth0 -c ./examples/fabs.conf -n
-
 
 ### Run
 
