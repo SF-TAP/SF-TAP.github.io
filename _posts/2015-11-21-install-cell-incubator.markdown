@@ -51,15 +51,16 @@ Then, build it.
     $ cd sf-incubator/src
     $ make
 
-## Run
+## For FreeBSD 10.1 Only!!
 
 Before running the SF-TAP cell incubator, disable offload engines of NICs.
 The shell script for disabling the engines for all NICs is included in the repository. Thus, you just need execute the script as follows.
 
     $ sudo ./misc/ifcap_disable.sh
 
-Finally, you can run the SF-TAP cell incubator as follows.
+## Run
 
+Finally, you can run the SF-TAP cell incubator as follows.
 
     # ./qb-separator -r ix0 -t igb0,igb1,igb2,igb3
 
