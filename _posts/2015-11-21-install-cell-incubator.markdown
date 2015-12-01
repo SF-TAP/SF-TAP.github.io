@@ -56,7 +56,7 @@ Then, build it.
 Before running the SF-TAP cell incubator, disable offload engines of NICs.
 The shell script for disabling the engines for all NICs is included in the repository. Thus, you just need execute the script as follows.
 
-    $ sudo ./misc/ifcap_disable_freebsd.sh
+    # ./misc/ifcap_disable_freebsd.sh
 
 Finally, you can run the SF-TAP cell incubator as follows.
 
@@ -69,9 +69,9 @@ igb[0-3] are NICs to which separated flows are forwarded.
 
 If you want to use many interfaces, increase the buffer size for netmap by sysctl.
 
-    $ sysctl -w dev.netmap.if_size=2048
-    $ sysctl -w dev.netmap.if_num=200
-    $ sysctl -w dev.netmap.ring_size=73728
-    $ sysctl -w dev.netmap.ring_num=400
-    $ sysctl -w dev.netmap.buf_size=2048
-    $ sysctl -w dev.netmap.buf_num=300000
+    # sysctl -w dev.netmap.if_size=2048
+    # sysctl -w dev.netmap.if_num=200
+    # sysctl -w dev.netmap.ring_size=73728
+    # sysctl -w dev.netmap.ring_num=400
+    # sysctl -w dev.netmap.buf_size=2048
+    # sysctl -w dev.netmap.buf_num=300000
