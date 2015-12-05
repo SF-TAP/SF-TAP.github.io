@@ -83,7 +83,7 @@ Note that data is involved only if chunk's event is DATA.
 
 The header is ended \n (line feed), and denoted as follows.
 
-    ip1=192.168.24.54,ip2=216.58.221.196,port1=59547,port2=80,hop=0,l3=ipv4,l4=tcp,event=CREATED\n
+    ip1=192.168.24.54,ip2=216.58.221.196,port1=59547,port2=80,hop=0,l3=ipv4,l4=tcp,event=CREATED,time=1449325525.8732619\n
 
 This is equivalent for
 
@@ -95,14 +95,15 @@ This is equivalent for
       "hop":   0,
       "l3":    "ipv4",
       "l4":    "tcp",
-      "event": "CREATED"
+      "event": "CREATED",
+      "time":  1449325525.8732619
     }
 
 in JSON. When the event is CREATED or DESTROYED, the chunk does not involve data.
 Otherwise, when the event is DATA, the chunk involve data.
 The header of DATA event is denoted as follows.
 
-    ip1=192.168.24.54,ip2=216.58.221.196,port1=59547,port2=80,hop=0,l3=ipv4,l4=tcp,event=DATA,from=2,match=down,len=494\n
+    ip1=192.168.24.54,ip2=216.58.221.196,port1=59547,port2=80,hop=0,l3=ipv4,l4=tcp,event=DATA,from=2,match=down,len=494,time=1449325525.8356969\n
 
 In this case, the header indicates that
 data is coming from (ip2=216.58.221.196, port2=80) because
@@ -112,6 +113,9 @@ provided in the configuration file shown before.
 Accordingly, you can determine whether the data is from server or client
 by the 'match' filed.
 The data length is indicated by len=494 in this case.
+The 'time' field indicates the rough timestamp,
+which is obtained by gettimeofday(), of the event.
+Thus, it is denoted in UNIX epoch time.
 
 Since multiple flows are outputted to a single abstraction interface,
 it is required to identify chunks by flow identifiers.
