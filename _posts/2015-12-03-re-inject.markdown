@@ -23,4 +23,16 @@ In this document, we show how to use the loopback7 intefrcace for HTTP proxy.
 
 ## Re-injecting Strategy
 
+Following figure shows the strategy for re-injecting flows of HTTP proxy.
+In this figure, the HTTP proxy handler connects to the HTTP proxy interface
+and the loopback7 interface for receiving and re-injecting flows of HTTP proxy.
+This handler strips data of HTTP proxy from encapsulated flows,
+and re-injects the internal flows to the SF-TAP flow abstractor
+via the loopback7 interface.
+
+The flow abstractor receives flows from the loopback7 interface,
+and classifies and outputs the flows to the proper interface;
+the SSL interface in this case.
+Accordingly, analyzers do not need to take care of encapsulation
+
 ![loopaback7 loopback7](/assets/loopback7_if.png)
