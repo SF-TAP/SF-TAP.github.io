@@ -33,6 +33,93 @@ via the loopback7 interface.
 The flow abstractor receives flows from the loopback7 interface,
 and classifies and outputs the flows to the proper interface;
 the SSL interface in this case.
-Accordingly, analyzers do not need to take care of encapsulation
+Accordingly, analyzers do not need to take care of encapsulations by HTTP proxy.
 
 ![loopaback7 loopback7](/assets/loopback7_if.png)
+
+## Pseudo Code for Re-injecting
+
+We then show the pseudo code for re-injecting encapsulated flows as follows.
+This code is quite similar with the one shown before ([Write Your Own Analyzers](tutorial/2015/11/21/write-your-own-analyzers.html "Write Your Own Analyzers")),
+but this code connects to 2 flow abstraction interfaces,
+which are for flows of HTTP proxy and re-injecting flows.
+As mentioned above, this code reads data and strips HTTP proxy's header,
+and re-injects flows to the loopback7 interface.
+
+    // connect to socket
+    s1 = socket();
+    connect(s1, "/tmp/sf-tap/tcp/http_proxy");
+    s2 = socket();
+    connect(s2, "/tmp/sf-tap/loopback7");
+    
+    function reinject(h, sid, buf, state) {
+        if (state[sid][h["match"]] == HTTP_HEADER) {
+            // return true, if read all HTTP header
+            if (strip_http_header(buf[sid][h["match"]])) {
+                state[sid][h["match"]] == HTTP_BODY;
+            }
+            
+            if (state[sid][h["match"]] == HTTP_BODY) {
+                header = gen_header(h, buf[sid][h["match"]].length);
+                
+                write(s2, header);
+                write(s2, buf[sid][h["match"]]);
+            }
+        }
+    }
+    
+    loop {
+        // read header
+        line = readline(s1);
+        h = parse_header(line);
+        sid = session_id(h);
+        
+        // read data
+        if (h["event"] == CREATED) {
+            state[sid]["up"] = HTTP_HEADER;
+            state[sid]["from"] = HTTP_HEADER;
+        } else if (h["event"] == DESTROYED) {
+            state.remove(sid);
+            buf.remove(sid);
+        } else { // DATA
+            read(s1, data, h["len"]);
+            
+            buf[sid][h["from"]].append(data);
+            reinject(h, sid, buf, state);
+        }
+    }
+
+We are providing an example re-injector for HTTP proxy in Julia language.
+Please see it as a reference. 
+([re-injector for HTTP proxy in Julia](https://github.com/SF-TAP/protocol-parser/blob/master/http_proxy/sftap_http_proxy.jl "re-injector for HTTP proxy in Julia"))
+
+## Header of Flow Abstraction Interface
+
+The loopback7 interface accept headers as follows.
+Note that all headers must be ended with '\n' (carriage return).
+The "hop" field is used for preventing infinite re-injection,
+and the value is internally incremented.
+Thus, you just do copy the original value to the re-injecting header.
+
+### CREATED event
+
+The header of CREATED event must contain fields of "ip1", "ip2", "port1", "port2", "hop", "l3", "l4",and "event", where the value of "event" must be CREATED.
+
+    ip1=192.168.24.54,ip2=216.58.221.196,port1=59547,port2=80,hop=0,l3=ipv4,l4=tcp,event=CREATED\n
+
+### DESTROYED event
+
+The header of DESTROYED event must contain fields of "ip1", "ip2", "port1", "port2", "hop", "l3", "l4",and "event", where the value of "event" must be DESTROYED.
+
+    ip1=192.168.24.54,ip2=216.58.221.196,port1=59547,port2=80,hop=0,l3=ipv4,l4=tcp,event=DESTROYED\n
+
+### DATA event
+
+The header of CREATED event must also contain fields of "ip1", "ip2", "port1", "port2", "hop", "l3", "l4",and "event", where the value of "event" must be DATA.
+Furthermore, it must contain "from", and "len" fileds.
+The "from" field indicates source of the data,
+and "len" field indicates the data length.
+The actual data follows after the DATA event header.
+
+    ip1=192.168.24.54,ip2=216.58.221.196,port1=59547,port2=80,hop=0,l3=ipv4,l4=tcp,event=DATA,from=2,len=494\n
+    494 bytes data is here
