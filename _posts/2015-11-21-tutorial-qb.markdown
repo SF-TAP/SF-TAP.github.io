@@ -13,9 +13,9 @@ Here, suppose that you have a following FreeBSD box, which has two 10 GbE (ix0 a
 
 ## Flow Based Separating
 
-You can use the qb-separator for traffic separating as follows.
-The qb-separator must be executed with root privilege,
+You can use the qb-separator for traffic separating as follows,
 where -l and -t means a prefix of "LEFT" and "TAP", respectively.
+The qb-separator must be executed with root privilege.
 
     # ./qb-separator -l ix0 -t igb0,igb1,igb2,igb3
 
