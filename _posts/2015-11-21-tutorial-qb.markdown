@@ -8,21 +8,21 @@ categories: tutorial
 # Tutorial of SF-TAP cell incubator
 
 Here, suppose that you have a following FreeBSD box, which has two 10 GbE (ix0 and ix1) and four 1 GbE (igb0, igb1, igb2 and igb3) interfaces.
--r is a prefix of "RIGHT", and -t is a prefix of "TAP".
 
 ![qb01 qb01](/assets/qb/qb01.png)
 
 ## Flow Based Separating
 
 You can use the qb-separator for traffic separating as follows.
-The qb-separator must be executed with root privilege.
+The qb-separator must be executed with root privilege,
+where -l and -t means a prefix of "LEFT" and "TAP", respectively.
 
     # ./qb-separator -l ix0 -t igb0,igb1,igb2,igb3
 
 ![qb02 qb02](/assets/qb/qb02.png)
 
-Here, the qb-separator captures traffic from ix0, then separates and forwards it to
-igb[0-3].
+Here, the qb-separator captures traffic from ix0, then separates and forwards
+it to igb[0-3].
 Note that it separates traffic by using the hash values of
 IP addresses and port numbers of captured packets.
 
@@ -39,11 +39,10 @@ Here, the qb-tap forwards all captured traffic from ix0 to igb[0-3].
 
 ## L2 Bridging
 
-You can use the qb-separator or the qb-tap as a simple software L2 bridge as follows.
+You can use the qb-separator or the qb-tap as a simple software L2 bridge
+as follows, where -r means "RIGHT".
 
     # ./qb-separator -l ix0 -r ix1
-
--l is a prefix of "LEFT".
 
 ![qb04 qb04](/assets/qb/qb04.png)
 
