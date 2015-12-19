@@ -109,10 +109,11 @@ In this case, the header indicates that
 data is coming from (ip2=216.58.221.196, port2=80) because
 the header denotes from=2.
 The entry of match=down indicates that the which regular expressions,
-provided in the configuration file shown before.
+provided in the configuration file shown before, is used for matching.
 Accordingly, you can determine whether the data is from server or client
 by the 'match' filed.
-The data length is indicated by len=494 in this case.
+The data length is indicated by the 'len' field.
+In this case, 494 bytes data follows after the header.
 The 'time' field indicates the rough timestamp,
 which is obtained by gettimeofday(), of the event.
 Thus, it is denoted in UNIX epoch time.
@@ -123,7 +124,7 @@ The SF-TAP flow abstractor identifies each flow by using 5-tuple as follows.
 
     (ip1, port1, ip2, port2, hop)
 
-The 'hop' filed is used for loopback7 interface,
+The 'hop' filed is used for the loopback7 interface,
 and the SF-TAP flow abstractor increments it internally.
 The loopback7 is used for re-injecting flows for encapsulated flows,
 such as HTTP proxy.
@@ -135,7 +136,7 @@ Thus, you need handle only DATA event for UDP protocols.
 
 ## Pseudo Code for TCP Protocols
 
-We give pseudo code to analyze TCP protocols as follows.
+We give a pseudo code to analyze TCP protocols as follows.
 
     // connect to socket
     s = socket();
@@ -162,8 +163,7 @@ We give pseudo code to analyze TCP protocols as follows.
 
 In this code, first of all, we connect to the file of UNIX domain socket.
 Then we read a line, which is a header, from the socket.
-We parse the line to interpret the header, and generate the session ID by using
-it.
+We parse the line to interpret the header, and generate the session ID from it.
 After that, we read data if the event is DATA where
 the data length is specified by 'len' field in the header.
 
@@ -171,7 +171,7 @@ The skeleton written in Python is available on [GitHub Gist](https://gist.github
 
 ## Pseudo Code for UDP Protocols
 
-Then, we give pseudo code to analyze UDP protocols as follows.
+Then, we give a pseudo code to analyze UDP protocols as follows.
 
     // connect to socket
     s = socket();
