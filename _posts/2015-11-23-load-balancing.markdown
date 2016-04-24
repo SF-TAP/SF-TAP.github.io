@@ -7,7 +7,7 @@ categories: tutorial
 
 ## Configuration for Load Balancing
 
-The SF-TAP flow abstractor provides load balancing mechanism for
+SF-TAP flow abstractor provides load balancing mechanism for
 application-level analyzers by using the flow abstraction interface.
 The flow abstraction interface can be divided into multiple interfaces
 by specifying the 'balance' field in the configuration file as follows.

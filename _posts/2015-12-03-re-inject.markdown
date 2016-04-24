@@ -7,17 +7,16 @@ categories: tutorial
 
 ## Loopback7 Interface
 
-The loopback7 interfaces provided by the SF-TAP flow abstractor is a special interface for injecting application flows into the SF-TAP flow abstractor.
+The loopback7 interfaces provided by SF-TAP flow abstractor is a special interface for injecting application flows into SF-TAP flow abstractor.
 This interfaces is helpful for handling encapsulated flows.
 For example, HTTP proxies allow HTTP clients to use HTTP tunneling by CONNECT method.
 Thus, actual flows, such as SSL/TLS, are encapsulated by HTTP protocol
 when using a HTTP proxy.
-In this case, the SF-TAP flow abstractor does not properly work because of
+In this case, SF-TAP flow abstractor does not properly work because of
 the encapsulation.
 
 In order to handle encapsulated flows properly,
-the encapsulated flows must be encapsulated and re-injected to the
-SF-TAP flow abstractor.
+the encapsulated flows must be encapsulated and re-injected to SF-TAP flow abstractor.
 The re-injecting is achieved by using the loopback7 interface.
 In this document, we show how to use the loopback7 intefrcace for HTTP proxy.
 
@@ -30,7 +29,7 @@ This handler strips data of HTTP proxy from encapsulated flows,
 and re-injects the internal flows to the SF-TAP flow abstractor
 via the loopback7 interface.
 
-The flow abstractor receives flows from the loopback7 interface,
+SF-TAP flow abstractor receives flows from the loopback7 interface,
 and classifies and outputs the flows to the proper interface;
 the SSL interface in this case.
 Accordingly, analyzers do not need to take care of encapsulations by HTTP proxy.

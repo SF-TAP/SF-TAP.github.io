@@ -7,17 +7,17 @@ layout: default
   <h1>What?</h1>
 
   <p>
-    The SF-TAP is a platform for application-level network traffic analysis. It can deal with high-bandwidth network traffic because of the scalable architecture. Furthermore, the SF-TAP allows developers to easily implement application-level network traffic analyzers because of some abstractions. The SF-TAP provides two main components, which are the SF-TAP flow abstractor and the SF-TAP cell incubator.
+    SF-TAP is a platform for application-level network traffic analysis. It can deal with high-bandwidth network traffic because of the scalable architecture. Furthermore, SF-TAP allows developers to easily implement application-level network traffic analyzers because of some abstractions. SF-TAP provides two main components, which are SF-TAP flow abstractor and SF-TAP cell incubator.
   </p>
 
   <h2>SF-TAP Flow Abstractor</h2>
   <p>
-    The SF-TAP flow abstractor abstracts network traffic by files of UNIX domain socket, much like Plan 9, UNIX's /dev or /proc. It captures L2 frames via a NIC by pcap or netmap, defragments fragmented IP packets, reassembles TCP flows, and classifies the flows by using regular expressions, which indicates application protocols. The classified flows are outputted to the files provided by UNIX domain socket. Accordingly, developers can only focus to implement application-level network traffic analyzers by just accessing the files. In other words, they do not need to take care of complex TCP states and IP fragmentation.
+    SF-TAP flow abstractor abstracts network traffic by files of UNIX domain socket, much like Plan 9, UNIX's /dev or /proc. It captures L2 frames via a NIC by pcap or netmap, defragments fragmented IP packets, reassembles TCP flows, and classifies the flows by using regular expressions, which indicates application protocols. That classified flows are outputted to the files provided by UNIX domain socket. Accordingly, developers can only focus to implement application-level network traffic analyzers by just accessing the files. In other words, they do not need to take care of complex TCP states and IP fragmentation.
   </p>
 
   <h2>SF-TAP Cell Incubator</h2>
   <p>
-    The SF-TAP cell incubator is a software-based network traffic balancer that mirrors and separates network traffic based on the flows. The flows are forwarded via multiple NICs to multiple instances of the SF-TAP flow abstractor to allow executing analyzers, which tend to consume many computer resources, on multiple physical machines.
+    SF-TAP cell incubator is a software-based network traffic balancer that mirrors and separates network traffic based on the flows. The flows are forwarded via multiple NICs to multiple instances of SF-TAP flow abstractor to allow executing analyzers, which tend to consume many computer resources, on multiple physical machines.
   </p>
 
   <img src="assets/highlevel.png" alt="Architecture of SF-TAP" title="Architecture of SF-TAP">
@@ -55,7 +55,7 @@ layout: default
         <a href="tutorial/2015/12/02/re-inject.html">Re-injecting Flows via Loopback7 Interace</a>
       </li>
       <li>
-        Configuration of SF-TAP Flow Abstractor
+        <a href="tutorial/2016/04/24/configuration-of-flow-abstractor.html">Configuration of SF-TAP Flow Abstractor</a>
       </li>
       <li>
         Build Option of SF-TAP Flow Abstractor

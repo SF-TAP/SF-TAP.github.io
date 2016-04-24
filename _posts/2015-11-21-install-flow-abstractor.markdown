@@ -19,7 +19,7 @@ First of all, install build-essential, cmake, git, libevent-dev, libboost-all-de
 
 ### Get Source
 
-Then, clone the source of the SF-TAP flow abstractor from GitHub.
+Then, clone the source of SF-TAP flow abstractor from GitHub.
 
     $ git clone https://github.com/SF-TAP/flow-abstractor.git
 
@@ -55,6 +55,6 @@ If you want to use netmap, set an option of USE_NETMAP=1 to cmake.
 
 ### Run
 
-Run the SF-TAP flow abstractor specifying a network interface and a config file.
+Run SF-TAP flow abstractor specifying a network interface and a config file.
 
     $ sudo ./src/sftap_fabs -i eth0 -c ./examples/fabs.conf

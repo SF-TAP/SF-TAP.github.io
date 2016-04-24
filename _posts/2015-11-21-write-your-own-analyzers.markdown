@@ -7,7 +7,7 @@ categories: tutorial
 
 # How to Write Application Level Analyzers
 
-In this document, we show how to implement analyzers for the SF-TAP flow abstractor.
+In this document, we show how to implement analyzers for SF-TAP flow abstractor.
 
 This tutorial is also available on SlideShare.
 
@@ -15,7 +15,7 @@ This tutorial is also available on SlideShare.
 
 ## Flow Abstraction Interfaces
 
-The SF-TAP flowabstractor provdes flow abstraction interfaces by using UNIX domain socket.
+SF-TAP flowabstractor provdes flow abstraction interfaces by using UNIX domain socket.
 Thus, in order to capture flows (a.k.a. TCP streams),
 you must access to the interfaces.
 The directory structure of the interfaces is as follows.
@@ -65,8 +65,8 @@ it must be meaningless.
 ## TCP Event Abstraction
 
 Actually, TCP handles many events (and many states),
-but the SF-TAP flow abstractor abstracts it by 3 events for simplicity.
-The SF-TAP flow abstractor defines 3 events which are
+but SF-TAP flow abstractor abstracts it by 3 events for simplicity.
+SF-TAP flow abstractor defines 3 events which are
 CREATED, DATA, and DESTROYED events.
 CREATED event is invoked when TCP session is established.
 More precisely, it is invoked when finished 3-way handshake and
