@@ -6,7 +6,7 @@ categories: installation
 ---
 ## FreeBSD Version
 
-This document is for FreeBSD 10.1 and 10.2.
+This document is for FreeBSD 10.1, 10.2 and 10.3.
 
 ## Build netmap Enabled Kernel
 

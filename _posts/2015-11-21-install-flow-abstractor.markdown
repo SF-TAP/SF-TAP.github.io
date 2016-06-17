@@ -6,7 +6,7 @@ categories: installation
 ---
 ## Ubuntu Version
 
-This document is for Ubuntu 14.10, 15.04 and 15.10.
+This document is for Ubuntu 14.10, 15.04, 15.10 and 16.04.
 
 ## Install Dependencies
 
