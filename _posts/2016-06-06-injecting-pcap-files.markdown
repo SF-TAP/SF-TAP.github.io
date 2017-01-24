@@ -7,7 +7,7 @@ categories: tutorial
 
 ## pcap Interface
 
-SF-TAP flow abstractor provides the interface for injecting pcap files.
+SF-TAP flow abstractor provides an interface for injecting pcap files.
 The injection can be done by writing pcap files to the interface as follows.
 
     $ ls /tmp/sf-tap/pcap

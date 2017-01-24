@@ -29,7 +29,7 @@ IP addresses and port numbers of captured packets.
 ## Mirroring
 
 You can also use qb-tap for traffic mirroring as follows.
-qb-tap also must be executed with root privilege.
+qb-tap must be also executed with root privilege.
 
     # ./qb-tap -l ix0 -t igb0,igb1,igb2,igb3
 
@@ -48,7 +48,7 @@ as follows, where -r means "RIGHT".
 
 ## L2 Bridging + Flow Based Separating
 
-You can use qb-separator as a L2 bridge and traffic separator as follows.
+You can use qb-separator as a L2 bridge and a traffic separator as follows.
 
     # ./qb-separator -l ix0 -r ix1 -t igb0,igb1,igb2,igb3
 
@@ -59,7 +59,7 @@ and forwards it to igb[0-3].
 
 ## L2 Bridging + Mirroring
 
-Similarly, qb-tap can work as an L2 bridge and traffic mirroring box as follows.
+Similarly, qb-tap can work as an L2 bridge and a traffic mirroring box as follows.
 
     # ./qb-tap -l ix0 -r ix1 -t igb0,igb1,igb2,igb3
 

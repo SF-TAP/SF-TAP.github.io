@@ -11,7 +11,7 @@ This document is for FreeBSD 10.1, 10.2 and 10.3.
 ## Build netmap Enabled Kernel
 
 First of all, you need build netmap enabled kernel to use SF-TAP cell incubator.
-Edit kernel config as follows to build the kernel.
+Edit the kernel config as follows to build the kernel.
 
     # cd /usr/src/sys/amd64/conf
     # cp GENERIC GENERIC.netmap
@@ -36,13 +36,13 @@ Finally, confirm that netmap is enabled.
 
 ## Install Dependencies
 
-Install git to get the source.
+Install git to get the source code.
 
     # pkg install git-x.x.x
 
 ## Build Cell Incubator
 
-Clone the souce form GitHub.
+Clone the source code form GitHub.
 
     $ git clone https://github.com/SF-TAP/sf-incubator.git
 
@@ -54,7 +54,7 @@ Then, build it.
 ## Run
 
 Before running SF-TAP cell incubator, disable offload engines of NICs.
-The shell script for disabling the engines for all NICs is included in the repository. Thus, you just need execute the script as follows.
+The shell script for disabling the engines for all NICs is included in the repository. Thus, you need just execute the script as follows.
 
     # ./misc/ifcap_disable_freebsd.sh
 

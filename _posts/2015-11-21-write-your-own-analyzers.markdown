@@ -15,7 +15,7 @@ This tutorial is also available on SlideShare.
 
 ## Flow Abstraction Interfaces
 
-SF-TAP flowabstractor provdes flow abstraction interfaces by using UNIX domain socket.
+SF-TAP flow abstractor provdes flow abstraction interfaces by using UNIX domain socket.
 Thus, in order to capture flows (a.k.a. TCP streams),
 you must access to the interfaces.
 The directory structure of the interfaces is as follows.
@@ -49,8 +49,8 @@ For example, a configuration of HTTP is given as follows.
 
 Here, regular expressions for HTTP protocol are defined by 'up' and 'down' on
 line 2 and 3.
-Note that there are 2 regular expressions here because TCP is connection oriented protocol.
-Whereas, UDP protocols have only 1 regular expression as follows.
+Note that there are 2 regular expressions here because TCP is a connection oriented protocol.
+On the other hand, UDP protocols have only 1 regular expression as follows.
 
     1 torrent_dht: # BitTorrent DHT
     2   up:     '^d.*1:y1:[eqr].*e$'
@@ -59,17 +59,16 @@ Whereas, UDP protocols have only 1 regular expression as follows.
     5   format: text
     6   nice:   100
 
-Even though you add an item of 'down' to protocols of UDP,
-it must be meaningless.
+Note that 'down' of UDP is meaningless.
 
 ## TCP Event Abstraction
 
 Actually, TCP handles many events (and many states),
-but SF-TAP flow abstractor abstracts it by 3 events for simplicity.
-SF-TAP flow abstractor defines 3 events which are
+but SF-TAP flow abstractor abstracts these events as 3 events for simplicity.
+SF-TAP flow abstractor defines 3 events, which are
 CREATED, DATA, and DESTROYED events.
 CREATED event is invoked when TCP session is established.
-More precisely, it is invoked when finished 3-way handshake and
+More precisely, it is invoked when finished a 3-way handshake and
 determined the application protocol by the regular expressions.
 DATA event is invoked when arriving data.
 DESTROYED event is invoked when closed TCP session because of
@@ -100,7 +99,7 @@ This is equivalent for
     }
 
 in JSON. When the event is CREATED or DESTROYED, the chunk does not involve data.
-Otherwise, when the event is DATA, the chunk involve data.
+Otherwise, when the event is DATA, the chunk involves data.
 The header of DATA event is denoted as follows.
 
     ip1=192.168.24.54,ip2=216.58.221.196,port1=59547,port2=80,hop=0,l3=ipv4,l4=tcp,event=DATA,from=2,match=down,len=494,time=1449325525.8356969\n
@@ -109,7 +108,7 @@ In this case, the header indicates that
 data is coming from (ip2=216.58.221.196, port2=80) because
 the header denotes from=2.
 The entry of match=down indicates that the which regular expressions,
-provided in the configuration file shown before, is used for matching.
+provided in the configuration file shown above, is used for matching.
 Accordingly, you can determine whether the data is from server or client
 by the 'match' filed.
 The data length is indicated by the 'len' field.
@@ -125,7 +124,7 @@ The SF-TAP flow abstractor identifies each flow by using 5-tuple as follows.
     (ip1, port1, ip2, port2, hop)
 
 The 'hop' filed is used for the loopback7 interface,
-and the SF-TAP flow abstractor increments it internally.
+and SF-TAP flow abstractor increments it internally.
 The loopback7 is used for re-injecting flows for encapsulated flows,
 such as HTTP proxy.
 We do not show more details of the loopback7 interface here.

@@ -8,7 +8,7 @@ categories: tutorial
 # Flow Abstraction Interfaces
 
 SF-TAP flow abstractor provides flow abstraction interfaces by using UNIX domain socket.
-If you run it, there are files in the directory as follows.
+If you run it, there are files in a directory as follows.
 
     $ cd /tmp/sf-tap
     $ ls -R
@@ -27,7 +27,7 @@ In this document, we show how to use example HTTP and DNS analyers provided by u
 
 ## Get Source
 
-First of all, you must get souce of the analyzers form GitHub.
+First of all, you must get source codes of the analyzers form GitHub.
 
     $ git clone https://github.com/SF-TAP/protocol-parser.git
     $ cd protocol-parser
@@ -42,7 +42,7 @@ You can execute it as follows.
     $ python3 http/sftap_http.py /tmp/sf-tap/tcp/http nobody
 
 Here, /tmp/sf-tap/tcp/http is a path to a flow abstraction interface of HTTP,
-and nobody is a flag specifying not to include HTTP body to outputs.
+and nobody is a flag specifying not to include HTTP body in outputs.
 
 If you access to any HTTP server when running the HTTP analyzer,
 you can get information of HTTP access in JSON.
@@ -123,7 +123,7 @@ Then run it.
 If you send any DNS queries, you will get information of DNS access in JSON
 from the standard output.
 
-For example, if you lookup sf-tap.github.io in another prompt,
+For example, if you look up sf-tap.github.io in another prompt,
 
     $ dig sf-tap.github.io
 

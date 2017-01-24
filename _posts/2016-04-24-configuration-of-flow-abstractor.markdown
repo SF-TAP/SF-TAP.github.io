@@ -7,7 +7,7 @@ categories: tutorial
 
 ## Configuration File
 
-SF-TAP flow abstractor reads configuration file written in YAML when waking up.
+SF-TAP flow abstractor reads a configuration file written in YAML when waking up.
 In this document, we explain how to write the configuration file for it.
 
 ## Example Configuration
@@ -84,7 +84,7 @@ We explain each section of the configuration here.
 ### global section
 
 The global section can contain 6 subsections, which are "home", "timeout",
-"lru", "cache", "tcp_threads", "regex_threads", to control
+"lru", "cache", "tcp_threads", "regex_threads", to control the
 behavior of SF-TAP flow abstractor.
 
 |home         | used to indicate the root directory to which abstraction iterfaces are located|
