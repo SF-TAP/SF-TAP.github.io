@@ -6,7 +6,7 @@ categories: installation
 ---
 ## Ubuntu Version
 
-This document is for Ubuntu 14.10, 15.04, 15.10 and 16.04.
+This document is for Ubuntu 14.10, 15.04, 15.10, 16.04, and 16.10.
 
 ## Install Dependencies
 
@@ -51,10 +51,10 @@ If you want to use netmap, set an option of USE_NETMAP=1 to cmake.
 
 , and pass -n option when executing as follows.
 
-    $ ./src/sftap_fabs -i eth0 -c ./examples/fabs.conf -n
+    $ ./src/sftap_fabs -i eth0 -c ./examples/fabs.yaml -n
 
 ### Run
 
 Run SF-TAP flow abstractor specifying a network interface and a config file.
 
-    $ sudo ./src/sftap_fabs -i eth0 -c ./examples/fabs.conf
+    $ sudo ./src/sftap_fabs -i eth0 -c ./examples/fabs.yaml
